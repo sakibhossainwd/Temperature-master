@@ -7,16 +7,25 @@ const loadTemperature = async (city) => {
     try{
         const res = await fetch(url);
         const data = await res.json();
-        // displayTempereture(data);
-        console.log(data.name)
+        displayTempereture(data);
+        console.log(data)
     }
     catch{
         console.log('Error:-', error)
     }
-    // 
-    // fetch(url)
-    // .then(res => res.json())
-    // .then(data => console.log(data))
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayAdvice(data.slip))
+};
+
+const displayTempereture = data => {
+    const dataContainer = document.getElementById('data-container');
+    dataContainer.innerHTML = `
+        <h1>${data.name}</h1>
+        <h3><span>38.06</span>&deg;C</h3>
+        <h1 class="lead">Clouds</h1>
+    `
 }
 
 loadTemperature('dhaka');
