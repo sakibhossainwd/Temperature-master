@@ -21,7 +21,7 @@ const loadTemperature = async(city) => {
 
 const displayTemperature = data => {
     console.log(data)
-    
+    const temperatureContainer = document.getElementById('temperature');
 }
 
 
