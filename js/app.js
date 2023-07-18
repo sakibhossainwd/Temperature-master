@@ -8,7 +8,7 @@ const loadTemperature = async(city) => {
         const res = await fetch(url);
         const data = await res.json();
         displayTemperature(data);
-        console.log(data)
+        // console.log(data)
     }
     catch{
         console.log('Error:-', error)
@@ -22,9 +22,28 @@ const loadTemperature = async(city) => {
 const displayTemperature = data => {
     console.log(data)
     const temperatureContainer = document.getElementById('temperature');
+    temperatureContainer.innerText = `${data.main}`
 }
 
+document.getElementById('Search-btn').addEventListener('click', function(){
+    const inputIdField = document.getElementById('input-field');
+    const cityName = inputIdField.value;
+    console.log(cityName);
+    loadTemperature(cityName);
+    inputIdField.value = "";
 
+    if(cityName  === ''){
+        alert('Please Enter your city name');
+    }
+})
+
+// serach field will when press Enter
+const input = document.getElementById('input-field');
+input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      document.getElementById("Search-btn").click();
+    }
+  });
 
 loadTemperature('dhaka');
 
