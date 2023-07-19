@@ -20,9 +20,11 @@ const loadTemperature = async(city) => {
 };
 
 const displayTemperature = data => {
-    console.log(data)
+    console.log(data.main.temp)
     const temperatureContainer = document.getElementById('temperature');
-    temperatureContainer.innerText = `${data.main}`
+    temperatureContainer.innerText = `${data.main.temp}`
+    const temperatureCity = document.getElementById('city-name');
+    temperatureCity.innerText = `${data.name}`
 }
 
 document.getElementById('Search-btn').addEventListener('click', function(){
@@ -45,7 +47,7 @@ input.addEventListener("keypress", function(event) {
     }
   });
 
-loadTemperature('dhaka');
+loadTemperature('comilla');
 
 
 
